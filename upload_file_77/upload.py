@@ -22,8 +22,9 @@ def upload():
         # 获取描述信息
         desc = flask.request.form.get("desc")
         avatar = flask.request.files.get("avatar")
-        file_name = secure_filename(avatar.file_name)
-        avatar.save(os.path.join(UPLOAD_PATH, file_name))
+        filename = secure_filename(avatar.filename)
+        avatar.save(os.path.join(UPLOAD_PATH, filename))
+        print(desc)
         return "文件上传成功"
 
 
